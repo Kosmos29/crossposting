@@ -7,7 +7,7 @@
     <thead>
     <tr>
         <th>${message(code: 'project.name.label')}</th>
-        <th>${message(code: 'project.created.label')}</th>
+        <th>${message(code: 'project.dateCreated.label')}</th>
     </tr>
     </thead>
     <tbody>
@@ -17,8 +17,8 @@
                 ${project.name.encodeAsHTML()}
             </td>
             <td class="Data">
-                <g:if test="${project.created != null}">
-                    ${project.created}
+                <g:if test="${project.dateCreated != null}">
+                    ${project.dateCreated}
                 </g:if>
             </td>
         </tr>

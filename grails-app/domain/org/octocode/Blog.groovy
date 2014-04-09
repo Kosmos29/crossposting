@@ -3,23 +3,24 @@ package org.octocode
 import org.jadira.usertype.dateandtime.joda.PersistentLocalDate
 import org.joda.time.LocalDate
 
-class Project extends VirtualDeletable {
+class Blog extends VirtualDeletable {
     String name
-    String description
+    String host
+    int port
+    String login
+    String password
     Boolean isActive = true
 
     LocalDate dateCreated
     LocalDate lastUpdated
-    LocalDate activationDate
 
-    static belongsTo = Blog
-    static hasMany = [links: Link, promotionTexts: Post, promotingSites: Blog]
-
+    static hasMany = [projects: Project]
     static constraints = {
         name blank: false
-        description blank: false,  maxSize: 4096
+        host blank: false, unique: true
+        login blank: false
+        password blank: false
         dateCreated type: PersistentLocalDate
         lastUpdated type: PersistentLocalDate
-        activationDate nullable: true, type: PersistentLocalDate
     }
 }
