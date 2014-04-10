@@ -1,8 +1,8 @@
 package org.octocode
 
-abstract class VirtualDeletable {
+class Entity {
     Boolean deleted = false
-    public void vDelete(Map map = [:])
+    public void _delete(Map map = [:])
     {
         deleted = true;
         this.save(map);

@@ -1,22 +1,19 @@
 package org.octocode
 
-import org.jadira.usertype.dateandtime.joda.PersistentLocalDate
-import org.joda.time.LocalDate
+import org.joda.time.DateTime
 
-class Post extends VirtualDeletable {
+class Post extends Entity {
     String text
     PostState state
 
-    LocalDate dateCreated
-    LocalDate lastUpdated
-    LocalDate postingDate
+    DateTime dateCreated
+    DateTime lastUpdated
+    DateTime postingDate
 
     static constraints = {
         text blank: false, maxSize: 8000
         state blank: false
-        dateCreated type: PersistentLocalDate
-        lastUpdated type: PersistentLocalDate
-        postingDate nullable: true, type: PersistentLocalDate
+        postingDate nullable: true
     }
     static belongsTo = [project: Project]
     static mapping = {

@@ -1,20 +1,17 @@
 package org.octocode
 
-import org.jadira.usertype.dateandtime.joda.PersistentLocalDate
-import org.joda.time.LocalDate
+import org.joda.time.DateTime
 
-class Link extends VirtualDeletable {
+class Link extends Entity {
     String link
-    float probability
+    int probability
 
-    LocalDate dateCreated
-    LocalDate lastUpdated
+    DateTime dateCreated
+    DateTime lastUpdated
 
     static constraints = {
         link url: true, blank: false
-        probability range: 0..1
-        dateCreated type: PersistentLocalDate
-        lastUpdated type: PersistentLocalDate
+        probability range: 0..100
     }
     static hasMany = [anchors: Anchor]
     static belongsTo = [project: Project]
