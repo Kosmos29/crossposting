@@ -1,18 +1,21 @@
 package org.octocode
-
 import org.joda.time.DateTime
 
-class Project {
+class Project extends Entity {
     String name
     String description
+    Boolean isActive = true
 
-    DateTime created
-    DateTime modified
+    DateTime dateCreated
+    DateTime lastUpdated
+    DateTime activationDate
+
+    static belongsTo = Blog
+    static hasMany = [links: Link, promotionTexts: Post, promotingSites: Blog]
 
     static constraints = {
-        name nullable: false, blank: false
-        description nullable: true, blank: false,  maxSize: 4096
-        created nullable: false
-        modified nullable: false
+        name blank: false
+        description blank: false,  maxSize: 4096
+        activationDate nullable: true
     }
 }
